@@ -127,7 +127,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
 
@@ -136,22 +136,46 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Zatwierdź połączenie"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="#313131"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:textSize="20dp"
+                />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="77dp"
+            android:layout_height="80dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/bttDijkstra"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Dijkstra" />
+                android:text="Dijkstra"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="#313131"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textSize="26dp"
+                />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
