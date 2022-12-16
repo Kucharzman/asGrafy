@@ -4,17 +4,154 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#313131"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    >
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.435" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvWezelKol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pierwszy\nwęzeł"
+                android:textSize="21dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:layout_marginLeft="30dp"
+                />
+
+            <EditText
+                android:id="@+id/edtWezelKol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="0"
+                android:textSize="21dp"
+                android:textColor="#00AF73"
+                android:backgroundTint="@color/teal_700"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginRight="30dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvWezelWier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Drugi\nwęzeł"
+                android:textSize="21dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:layout_marginLeft="30dp"
+                />
+
+            <EditText
+                android:id="@+id/edtWezelWier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text="0"
+                android:textSize="21dp"
+                android:textColor="#00AF73"
+                android:backgroundTint="@color/teal_700"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginRight="30dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPolaczenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Połączenie"
+                android:textSize="21dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/teal_700"
+                android:layout_marginLeft="30dp"
+                />
+
+            <EditText
+                android:id="@+id/edtPolaczenie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:text=""
+                android:textSize="21dp"
+                android:textColor="#00AF73"
+                android:backgroundTint="@color/teal_700"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:layout_marginRight="30dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bttDijkstra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dijkstra" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
