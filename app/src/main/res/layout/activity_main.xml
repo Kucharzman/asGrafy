@@ -161,8 +161,22 @@
                 android:backgroundTint="@color/teal_700"
                 android:textColor="#313131"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="26dp"
+                />
+
+            <Button
+                android:id="@+id/bttGraph"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Pokaż Węzły"
+                android:backgroundTint="@color/teal_700"
+                android:textColor="#313131"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:textSize="26dp"
                 />
 
