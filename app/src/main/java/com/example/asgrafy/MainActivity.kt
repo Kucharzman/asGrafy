@@ -147,5 +147,9 @@ class MainActivity : AppCompatActivity() {
 
         }//bttConn
 
+        bttDijk.setOnClickListener {
+            
+        }
+
     }//OnCreate
 }
