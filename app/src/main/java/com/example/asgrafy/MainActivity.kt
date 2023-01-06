@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var edtCol : EditText
     lateinit var edtRow : EditText
+    lateinit var edtConn: EditText
     lateinit var bttConn: Button
     lateinit var bttDijk: Button
     lateinit var bttShow: Button
-    lateinit var tvOutPut: TextView
+    lateinit var tvOutPut:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         edtCol = findViewById(R.id.edtWezelKol)
         edtRow = findViewById(R.id.edtWezelWier)
+        edtConn= findViewById(R.id.edtPolaczenie)
         bttConn= findViewById(R.id.bttPolaczenieZat)
         bttDijk= findViewById(R.id.bttDijkstra)
         bttShow= findViewById(R.id.bttGraph)
@@ -70,14 +74,56 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        }
+        }//bttShow
 
-        /*
-        for (row in arrGreg){
-            for(col in arrGreg){
-                findViewById<TextView>(R.id.tvOutPut).append(arrGreg[row][col].toString())
+
+        edtCol.addTextChangedListener {
+            if(edtCol.text.isNotEmpty()){
+                val colValue : Int = edtCol.text.toString().toInt()
+                val rowValue : Int = edtRow.text.toString().toInt()
+
+                if (colValue > 5 || rowValue > 5){
+                    //val maxVal = 5
+                    //edtCol.setText(maxVal)
+
+                    val toastText = "Graf posiada 6 wierzchołków (A-F). Proszę wprowadzić wartość od 0 do 5"
+                    val toast = Toast.makeText(applicationContext, toastText, Toast.LENGTH_LONG)
+                    toast.show()
+                    edtConn.setText("")
+
+                    return@addTextChangedListener
+                }
+
+                val nodeInfo : String = arrGreg[colValue][rowValue].toString()
+                edtConn.setText(nodeInfo)
+            }else{
+                edtConn.setText("")
             }
-        }
-         */
-    }
+        }//edtCol
+
+        edtRow.addTextChangedListener {
+            if (edtRow.text.isNotEmpty()) {
+                val colValue : Int = edtCol.text.toString().toInt()
+                val rowValue : Int = edtRow.text.toString().toInt()
+
+                if (rowValue > 5 || colValue > 5){
+                    //val maxVal = 5
+                    //edtRow.setText(maxVal)
+
+                    val toastText = "Graf posiada 6 wierzchołków (A-F). Proszę wprowadzić wartość od 0 do 5"
+                    val toast = Toast.makeText(applicationContext, toastText, Toast.LENGTH_LONG)
+                    toast.show()
+                    edtConn.setText("")
+
+                    return@addTextChangedListener
+                }
+
+                val nodeInfo : String = arrGreg[colValue][rowValue].toString()
+                edtConn.setText(nodeInfo)
+            }else{
+                edtConn.setText("")
+            }
+        }//edtRow
+
+    }//OnCreate
 }
