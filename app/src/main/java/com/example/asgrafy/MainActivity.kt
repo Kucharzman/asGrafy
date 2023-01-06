@@ -3,15 +3,32 @@ package com.example.asgrafy
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var edtCol : EditText
+    lateinit var edtRow : EditText
+    lateinit var bttConn: Button
+    lateinit var bttDijk: Button
+    lateinit var bttShow: Button
+    lateinit var tvOutPut: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        edtCol = findViewById(R.id.edtWezelKol)
+        edtRow = findViewById(R.id.edtWezelWier)
+        bttConn= findViewById(R.id.bttPolaczenieZat)
+        bttDijk= findViewById(R.id.bttDijkstra)
+        bttShow= findViewById(R.id.bttGraph)
+        tvOutPut=findViewById(R.id.tvOutPut)
+
         //deklaracja grafu
-        val arrGreg = arrayOf(
+        var arrGreg = arrayOf(
                    //A,B,C,D,E,F
             arrayOf( 0,1,0,0,0,0 ),//A
             arrayOf( 0,0,0,0,0,0 ),//B
@@ -23,9 +40,9 @@ class MainActivity : AppCompatActivity() {
 
 
         //wyswietlanie grafu
-        findViewById<Button>(R.id.bttGraph).setOnClickListener {
+        bttShow.setOnClickListener {
 
-            findViewById<TextView>(R.id.tvOutPut).text = ""
+            tvOutPut.text = ""
             var cTx = ""
             var rTx = ""
 
@@ -49,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                             5 -> rTx = "F"
                         }
 
-                        findViewById<TextView>(R.id.tvOutPut).append("Połączenie " + rTx + " z " + cTx +"\n")
+                        tvOutPut.append("Połączenie " + rTx + " z " + cTx +"\n")
                     }
                 }
             }
