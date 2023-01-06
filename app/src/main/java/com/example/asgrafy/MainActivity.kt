@@ -34,13 +34,13 @@ class MainActivity : AppCompatActivity() {
         //deklaracja grafu
         var arrGreg = arrayOf(
                    //A,B,C,D,E,F
-            arrayOf( 0,1,0,0,0,0 ),//A
+            arrayOf( 0,0,0,0,0,0 ),//A
             arrayOf( 0,0,0,0,0,0 ),//B
             arrayOf( 0,0,0,0,0,0 ),//C
-            arrayOf( 0,0,0,1,0,0 ),//D
-            arrayOf( 0,0,0,0,0,1 ),//E
+            arrayOf( 0,0,0,0,0,0 ),//D
+            arrayOf( 0,0,0,0,0,0 ),//E
             arrayOf( 0,0,0,0,0,0 ) //F
-        )
+        )//order : arrGreg[row][column]
 
 
         //wyswietlanie grafu
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 val colValue : Int = edtCol.text.toString().toInt()
                 val rowValue : Int = edtRow.text.toString().toInt()
 
-                if (colValue > 5 || rowValue > 5){
+                if (colValue !in 0..5 || rowValue !in 0..5){
                     //val maxVal = 5
                     //edtCol.setText(maxVal)
 
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                     return@addTextChangedListener
                 }
 
-                val nodeInfo : String = arrGreg[colValue][rowValue].toString()
+                val nodeInfo : String = arrGreg[rowValue][colValue].toString()
                 edtConn.setText(nodeInfo)
             }else{
                 edtConn.setText("")
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                 val colValue : Int = edtCol.text.toString().toInt()
                 val rowValue : Int = edtRow.text.toString().toInt()
 
-                if (rowValue > 5 || colValue > 5){
+                if (rowValue !in 0..5 || colValue !in 0..5){
                     //val maxVal = 5
                     //edtRow.setText(maxVal)
 
@@ -118,12 +118,34 @@ class MainActivity : AppCompatActivity() {
                     return@addTextChangedListener
                 }
 
-                val nodeInfo : String = arrGreg[colValue][rowValue].toString()
+                val nodeInfo : String = arrGreg[rowValue][colValue].toString()
                 edtConn.setText(nodeInfo)
             }else{
                 edtConn.setText("")
             }
         }//edtRow
+
+        bttConn.setOnClickListener {
+
+            val colValue : Int = edtCol.text.toString().toInt()
+            val rowValue : Int = edtRow.text.toString().toInt()
+            val gotConnectionValue : Int = edtConn.text.toString().toInt()
+
+            if (colValue in 0..5 && rowValue in 0..5){
+                if (gotConnectionValue == 1 || gotConnectionValue == 0){
+                    arrGreg[rowValue][colValue] = gotConnectionValue
+                }else{
+                    val toastText = "Połączenie musi mieć wartość 0 lub 1"
+                    val toast = Toast.makeText(applicationContext, toastText, Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+            }else{
+                val toastText = "Wartość wierzchołków musi być w przedziale od 0 do 5"
+                val toast = Toast.makeText(applicationContext, toastText, Toast.LENGTH_SHORT)
+                toast.show()
+            }
+
+        }//bttConn
 
     }//OnCreate
 }
