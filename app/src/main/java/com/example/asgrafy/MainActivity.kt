@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
             arrayOf( 0,0,0,0,0,0 ) //F
         )
 
+
+        //wyswietlanie grafu
         findViewById<Button>(R.id.bttGraph).setOnClickListener {
 
             findViewById<TextView>(R.id.tvOutPut).text = ""
