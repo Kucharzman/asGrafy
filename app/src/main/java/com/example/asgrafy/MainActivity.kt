@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import org.jetbrains.annotations.TestOnly
 
 class MainActivity : AppCompatActivity() {
 
@@ -165,49 +166,64 @@ class MainActivity : AppCompatActivity() {
 
         bttDijk.setOnClickListener {
 
+            val weights = mapOf(
+                Pair("A", "B") to 2,
+                Pair("A", "C") to 8,
+                Pair("A", "D") to 5,
+                Pair("B", "C") to 1,
+                Pair("C", "E") to 3,
+                Pair("D", "E") to 2
+            )
+
+            val startingPoint = "A"
+            val shortestPathTree = dijkstra(Graph(weights = weights, vertices = setOf(), edges = mapOf()),startingPoint)
+
+            tvOutPut.setText("")
+            tvOutPut.append(shortestPath(shortestPathTree,startingPoint,"C").toString())
 
         }//bttDijkstra
 
-        data class Graph<T>(
-            val vertices: Set<T>,
-            val edges: Map<T,Set<T>>,
-            val weights: Map<Pair<T,T>,Int>
-        )
-
-        fun <T> dijkstra(graph: Graph<T>, startPoint: T): Map<T,T?>{
-            val subSet: MutableSet<T> = mutableSetOf()
-            val delta = graph.vertices.map { it to Int.MAX_VALUE }.toMap().toMutableMap()
-            delta[startPoint] = 0
-
-            val previous: MutableMap<T,T?> = graph.vertices.map { it to null }.toMap().toMutableMap()
-
-            while (subSet != graph.vertices) {
-                val v: T = delta
-                    .filter { !subSet.contains(it.key) }
-                    .minBy { it.value }!!
-                    .key
-
-                graph.edges.getValue(v).minus(subSet).forEach { neighbor ->
-                    val newPath = delta.getValue(v) + graph.weights.getValue(Pair(v,neighbor))
-
-                    if (newPath < delta.getValue(neighbor)){
-                        delta[neighbor] = newPath
-                        previous[neighbor] = v
-                    }
-                }
-
-                subSet.add(v)
-            }
-            return previous.toMap()
-        }
-
-        fun <T> shortestPath(shortestPathTree: Map<T, T?>, start: T, end: T): List<T> {
-            fun pathTo(start: T, end: T): List<T> {
-                if (shortestPathTree[end] == null) return listOf(end)
-                return listOf(pathTo(start, shortestPathTree[end]!!), listOf(end)).flatten()
-            }
-            return pathTo(start, end)
-        }
-
     }//OnCreate
+
+    data class Graph<T>(
+        val vertices: Set<T>,
+        val edges: Map<T,Set<T>>,
+        val weights: Map<Pair<T,T>,Int>
+    )
+
+    fun <T> dijkstra(graph: Graph<T>, startPoint: T): Map<T,T?>{
+        val subSet: MutableSet<T> = mutableSetOf()
+        val delta = graph.vertices.map { it to Int.MAX_VALUE }.toMap().toMutableMap()
+        delta[startPoint] = 0
+
+        val previous: MutableMap<T,T?> = graph.vertices.map { it to null }.toMap().toMutableMap()
+
+        while (subSet != graph.vertices) {
+            val v: T = delta
+                .filter { !subSet.contains(it.key) }
+                .minBy { it.value }!!
+                .key
+
+            graph.edges.getValue(v).minus(subSet).forEach { neighbor ->
+                val newPath = delta.getValue(v) + graph.weights.getValue(Pair(v,neighbor))
+
+                if (newPath < delta.getValue(neighbor)){
+                    delta[neighbor] = newPath
+                    previous[neighbor] = v
+                }
+            }
+
+            subSet.add(v)
+        }
+        return previous.toMap()
+    }
+
+    fun <T> shortestPath(shortestPathTree: Map<T, T?>, start: T, end: T): List<T> {
+        fun pathTo(start: T, end: T): List<T> {
+            if (shortestPathTree[end] == null) return listOf(end)
+            return listOf(pathTo(start, shortestPathTree[end]!!), listOf(end)).flatten()
+        }
+        return pathTo(start, end)
+    }
+
 }
