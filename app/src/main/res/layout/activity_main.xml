@@ -195,6 +195,9 @@
 
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
             android:id="@+id/tvOutPut"
             android:layout_width="match_parent"
@@ -206,6 +209,6 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
             />
-
+        </ScrollView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
