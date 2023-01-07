@@ -185,6 +185,8 @@ class MainActivity : AppCompatActivity() {
 
     }//OnCreate
 
+    //pierwszy algorytm
+
     data class Graph<T>(
         val vertices: Set<T>,
         val edges: Map<T,Set<T>>,
