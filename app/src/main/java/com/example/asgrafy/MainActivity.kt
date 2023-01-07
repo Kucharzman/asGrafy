@@ -1,13 +1,12 @@
 package com.example.asgrafy
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
 
@@ -165,7 +164,8 @@ class MainActivity : AppCompatActivity() {
         }//bttConn
 
         bttDijk.setOnClickListener {
-            
+
+
         }
 
     }//OnCreate
