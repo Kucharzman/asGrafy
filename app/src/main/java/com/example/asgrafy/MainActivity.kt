@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var edtConn: EditText
     lateinit var bttConn: Button
     lateinit var bttDijk: Button
-    lateinit var bttShow: Button
+    lateinit var bttPaths: Button
+    lateinit var bttShowG: Button
     lateinit var tvOutPut:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,23 +29,24 @@ class MainActivity : AppCompatActivity() {
         edtConn= findViewById(R.id.edtPolaczenie)
         bttConn= findViewById(R.id.bttPolaczenieZat)
         bttDijk= findViewById(R.id.bttDijkstra)
-        bttShow= findViewById(R.id.bttGraph)
+        bttPaths= findViewById(R.id.bttGraph)
+        bttShowG= findViewById(R.id.bttGraphFull)
         tvOutPut=findViewById(R.id.tvOutPut)
 
         //deklaracja grafu
         var arrGreg = arrayOf(
                    //A,B,C,D,E,F
-            arrayOf( 0,0,0,0,0,0 ),//A
-            arrayOf( 0,0,0,0,0,0 ),//B
-            arrayOf( 0,0,0,0,0,0 ),//C
-            arrayOf( 0,0,0,0,0,0 ),//D
-            arrayOf( 0,0,0,0,0,0 ),//E
-            arrayOf( 0,0,0,0,0,0 ) //F
+            arrayOf( 1,1,1,1,1,0 ),//A
+            arrayOf( 0,1,0,0,1,1 ),//B
+            arrayOf( 1,1,1,0,0,1 ),//C
+            arrayOf( 1,0,0,1,1,1 ),//D
+            arrayOf( 1,1,0,1,0,0 ),//E
+            arrayOf( 0,1,1,1,1,1 ) //F
         )//order : arrGreg[row][column]
 
 
-        //wyswietlanie grafu
-        bttShow.setOnClickListener {
+        //wyswietlanie połączeń grafu
+        bttPaths.setOnClickListener {
 
             tvOutPut.text = ""
             var cTx = ""
@@ -74,7 +76,22 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-        }//bttShow
+        }//bttPaths
+
+        bttShowG.setOnClickListener {
+            tvOutPut.text = ""
+            /*
+            for (r in arrGreg){
+                tvOutPut.append(arrGreg[r.toString().toInt()].toString())
+            }
+             */
+            for (r in 0..5) {
+                for (c in 0..5) {
+                    tvOutPut.append(arrGreg[r][c].toString() + " ")
+                }
+                tvOutPut.append("\n")
+            }
+        }//bttGraphFull
 
 
         edtCol.addTextChangedListener {
